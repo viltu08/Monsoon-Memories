@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain at Three - Tishani Doshi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400&display=swap" rel="stylesheet">
+    <style>
+		
+		/* This code has been generated using the help of ChatGPT */
+        body {
+            font-family: 'Manjari', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #87CEEB, #001F3F);
+            color: white;
+            overflow: hidden;
+            height: 100vh; /* Full height */
+            transition: background 5s; /* Transition for background */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            height: 100%; /* Full height */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            transition: color 0.5s;
+            color: #6699cc;
+        }
+
+        .poem {
+            font-size: 18px;
+            line-height: 1.6;
+            position: relative;
+            margin-top: 50px; /* Space above */
+        }
+
+        .poem span {
+            display: inline-block;
+            transition: transform 0.5s;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .falling {
+            animation: fall var(--duration) linear infinite forwards;
+        }
+
+        /* Change body background on character hover */
+        .poem span:hover {
+            background: #2a547e; /* Solid dark navy on hover */
+            transition: background 5s; /* Transition for background */
+        }
+
+        .message {
+            color: #6699cc;
+            transition: opacity 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rain at Three <br>by Tishani Doshi</h1>
+        <div class="poem">
+            <!-- Poem content as before -->
+            <span style="--delay: 0s; --duration: 1s;" class="fall-on-hover">Rain</span>
+            <span style="--delay: 0.1s; --duration: 1.2s;" class="fall-on-hover">at</span>
+            <span style="--delay: 0.2s; --duration: 1.5s;" class="fall-on-hover">three</span>
+            <span style="--delay: 0.3s; --duration: 1.3s;" class="fall-on-hover">splits</span>
+            <span style="--delay: 0.4s; --duration: 1.6s;" class="fall-on-hover">the</span>
+            <span style="--delay: 0.5s; --duration: 1.4s;" class="fall-on-hover">bed</span>
+            <span style="--delay: 0.6s; --duration: 1.8s;" class="fall-on-hover">in</span>
+            <span style="--delay: 0.7s; --duration: 1.7s;" class="fall-on-hover">half,</span><br>
+            <span style="--delay: 0.8s; --duration: 1.9s;" class="fall-on-hover">cracks</span>
+            <span style="--delay: 0.9s; --duration: 1.5s;" class="fall-on-hover">at</span>
+            <span style="--delay: 1.0s; --duration: 1.6s;" class="fall-on-hover">windows</span>
+            <span style="--delay: 1.1s; --duration: 1.3s;" class="fall-on-hover">like</span>
+            <span style="--delay: 1.2s; --duration: 1.4s;" class="fall-on-hover">horsemen</span>
+            <span style="--delay: 1.3s; --duration: 1.8s;" class="fall-on-hover">blistering</span><br>
+            <span style="--delay: 1.4s; --duration: 1.5s;" class="fall-on-hover">through</span>
+            <span style="--delay: 1.5s; --duration: 1.6s;" class="fall-on-hover">a</span>
+            <span style="--delay: 1.6s; --duration: 1.4s;" class="fall-on-hover">century</span>
+            <span style="--delay: 1.7s; --duration: 1.2s;" class="fall-on-hover">of</span>
+            <span style="--delay: 1.8s; --duration: 1.3s;" class="fall-on-hover">hibernation.</span><br>
+            <span style="--delay: 1.9s; --duration: 1.7s;" class="fall-on-hover">The</span>
+            <span style="--delay: 2.0s; --duration: 1.8s;" class="fall-on-hover">washing’s</span>
+            <span style="--delay: 2.1s; --duration: 1.4s;" class="fall-on-hover">on</span>
+            <span style="--delay: 2.2s; --duration: 1.5s;" class="fall-on-hover">the</span>
+            <span style="--delay: 2.3s; --duration: 1.3s;" class="fall-on-hover">line.</span><br>
+            <span style="--delay: 2.4s; --duration: 1.6s;" class="fall-on-hover">There</span>
+            <span style="--delay: 2.5s; --duration: 1.9s;" class="fall-on-hover">are</span>
+            <span style="--delay: 2.6s; --duration: 1.4s;" class="fall-on-hover">pillows</span>
+            <span style="--delay: 2.7s; --duration: 1.5s;" class="fall-on-hover">in</span>
+            <span style="--delay: 2.8s; --duration: 1.3s;" class="fall-on-hover">the</span>
+            <span style="--delay: 2.9s; --duration: 1.8s;" class="fall-on-hover">grass.</span><br>
+            <span style="--delay: 3.0s; --duration: 1.7s;" class="fall-on-hover">All</span>
+            <span style="--delay: 3.1s; --duration: 1.4s;" class="fall-on-hover">the</span>
+            <span style="--delay: 3.2s; --duration: 1.5s;" class="fall-on-hover">weeds</span>
+            <span style="--delay: 3.3s; --duration: 1.6s;" class="fall-on-hover">we</span>
+            <span style="--delay: 3.4s; --duration: 1.9s;" class="fall-on-hover">pulled</span>
+            <span style="--delay: 3.5s; --duration: 1.8s;" class="fall-on-hover">up</span>
+            <span style="--delay: 3.6s; --duration: 1.9s;" class="fall-on-hover">yesterday</span><br>
+            <span style="--delay: 3.7s; --duration: 1.5s;" class="fall-on-hover">lie</span>
+            <span style="--delay: 3.8s; --duration: 1.6s;" class="fall-on-hover">in</span>
+            <span style="--delay: 3.9s; --duration: 1.4s;" class="fall-on-hover">clotted</span>
+            <span style="--delay: 4.0s; --duration: 1.3s;" class="fall-on-hover">heaps,</span>
+            <span style="--delay: 4.1s; --duration: 1.7s;" class="fall-on-hover">dying</span>
+            <span style="--delay: 4.2s; --duration: 1.6s;" class="fall-on-hover">slowly.</span><br>
+            <span style="--delay: 4.3s; --duration: 1.8s;" class="fall-on-hover">We</span>
+            <span style="--delay: 4.4s; --duration: 1.9s;" class="fall-on-hover">wake</span>
+            <span style="--delay: 4.5s; --duration: 1.5s;" class="fall-on-hover">the</span>
+            <span style="--delay: 4.6s; --duration: 1.4s;" class="fall-on-hover">fan-whir</span>
+            <span style="--delay: 4.7s; --duration: 1.3s;" class="fall-on-hover">sea-heave</span><br>
+            <span style="--delay: 4.8s; --duration: 1.6s;" class="fall-on-hover">of</span>
+            <span style="--delay: 4.9s; --duration: 1.7s;" class="fall-on-hover">our</span>
+            <span style="--delay: 5.0s; --duration: 1.3s;" class="fall-on-hover">muscled</span>
+            <span style="--delay: 5.1s; --duration: 1.5s;" class="fall-on-hover">Tamil</span>
+            <span style="--delay: 5.2s; --duration: 1.4s;" class="fall-on-hover">Nadu</span>
+            <span style="--delay: 5.3s; --duration: 1.3s;" class="fall-on-hover">nights.</span><br>
+            <span style="--delay: 5.4s; --duration: 1.9s;" class="fall-on-hover">We</span>
+            <span style="--delay: 5.5s; --duration: 1.7s;" class="fall-on-hover">turn</span>
+            <span style="--delay: 5.6s; --duration: 1.4s;" class="fall-on-hover">inwards</span><br>
+            <span style="--delay: 5.7s; --duration: 1.3s;" class="fall-on-hover">announce</span>
+            <span style="--delay: 5.8s; --duration: 1.6s;" class="fall-on-hover">how</span>
+            <span style="--delay: 5.9s; --duration: 1.4s;" class="fall-on-hover">patiently</span><br>
+            <span style="--delay: 6.0s; --duration: 1.5s;" class="fall-on-hover">we’ve</span>
+            <span style="--delay: 6.1s; --duration: 1.3s;" class="fall-on-hover">waited</span>
+            <span style="--delay: 6.2s; --duration: 1.6s;" class="fall-on-hover">for</span>
+            <span style="--delay: 6.3s; --duration: 1.7s;" class="fall-on-hover">this</span>
+            <span style="--delay: 6.4s; --duration: 1.5s;" class="fall-on-hover">uprooting.</span><br>
+            <span style="--delay: 6.5s; --duration: 1.4s;" class="fall-on-hover">Now</span>
+            <span style="--delay: 6.6s; --duration: 1.3s;" class="fall-on-hover">that</span>
+            <span style="--delay: 6.7s; --duration: 1.8s;" class="fall-on-hover">damaged</span>
+            <span style="--delay: 6.8s; --duration: 1.6s;" class="fall-on-hover">petals</span>
+            <span style="--delay: 6.9s; --duration: 1.4s;" class="fall-on-hover">of</span>
+            <span style="--delay: 7.0s; --duration: 1.5s;" class="fall-on-hover">hibiscus</span><br>
+            <span style="--delay: 7.1s; --duration: 1.9s;" class="fall-on-hover">drown</span>
+            <span style="--delay: 7.2s; --duration: 1.8s;" class="fall-on-hover">the</span>
+            <span style="--delay: 7.3s; --duration: 1.4s;" class="fall-on-hover">terrace</span>
+            <span style="--delay: 7.4s; --duration: 1.5s;" class="fall-on-hover">stones,</span><br>
+            <span style="--delay: 7.5s; --duration: 1.3s;" class="fall-on-hover">we</span>
+            <span style="--delay: 7.6s; --duration: 1.6s;" class="fall-on-hover">must</span>
+            <span style="--delay: 7.7s; --duration: 1.7s;" class="fall-on-hover">kneel</span>
+            <span style="--delay: 7.8s; --duration: 1.5s;" class="fall-on-hover">together</span>
+            <span style="--delay: 7.9s; --duration: 1.4s;" class="fall-on-hover">and</span>
+            <span style="--delay: 8.0s; --duration: 1.5s;" class="fall-on-hover">gather.</span><br>
+            <span style="--delay: 8.1s; --duration: 1.4s;" class="fall-on-hover">This</span>
+            <span style="--delay: 8.2s; --duration: 1.3s;" class="fall-on-hover">is</span>
+            <span style="--delay: 8.3s; --duration: 1.6s;" class="fall-on-hover">how</span>
+            <span style="--delay: 8.4s; --duration: 1.7s;" class="fall-on-hover">desire</span>
+            <span style="--delay: 8.5s; --duration: 1.5s;" class="fall-on-hover">works:</span><br>
+            <span style="--delay: 8.6s; --duration: 1.4s;" class="fall-on-hover">splintering</span>
+            <span style="--delay: 8.7s; --duration: 1.3s;" class="fall-on-hover">first,</span>
+            <span style="--delay: 8.8s; --duration: 1.6s;" class="fall-on-hover">then</span>
+            <span style="--delay: 8.9s; --duration: 1.4s;" class="fall-on-hover">joining.</span>
+        </div>
+        <br>
+        <span class="message" id="hoverMessage">Hover over the poem to make it rain</span>
+    </div>
+
+<audio id="thunderSound" src="https://github.com/viltu08/Monsoon/blob/e06d9add0208069b2fcc40ec6effd96e3257e56d/Fall/thunder.mp3?raw=true" preload="auto"></audio>
+
+
+    <script>
+        const spans = document.querySelectorAll('.fall-on-hover');
+        const thunderSound = document.getElementById('thunderSound');
+        const hoverMessage = document.getElementById('hoverMessage');
+
+        spans.forEach(span => {
+            span.addEventListener('mouseover', () => {
+                span.classList.add('falling');
+                document.body.style.background = '#2a547e'; // Change background to dark navy
+                hoverMessage.style.opacity = '0'; // Hide the message
+
+                // Play the thunder sound if not already playing
+                if (thunderSound.paused) {
+                    thunderSound.loop = true; // Loop the audio
+                    thunderSound.play();
+                }
+            });
+        });
+
+        // Optional: Stop the sound when mouse leaves the poem (if you want)
+        spans.forEach(span => {
+            span.addEventListener('mouseleave', () => {
+                // Optionally stop the sound if you want
+                // thunderSound.pause();
+                // thunderSound.currentTime = 0; // Reset the sound
+            });
+        });
+    </script>
+</body>
+</html>

@@ -6,8 +6,7 @@
     <title>Rain at Three - Tishani Doshi</title>
     <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400&display=swap" rel="stylesheet">
     <style>
-		
-		/* This code has been generated using the help of ChatGPT */
+        /* This code has been generated using the help of ChatGPT */
         body {
             font-family: 'Manjari', sans-serif;
             margin: 0;
@@ -57,12 +56,6 @@
 
         .falling {
             animation: fall var(--duration) linear infinite forwards;
-        }
-
-        /* Change body background on character hover */
-        .poem span:hover {
-            background: #2a547e; /* Solid dark navy on hover */
-            transition: background 5s; /* Transition for background */
         }
 
         .message {
@@ -167,21 +160,19 @@
             <span style="--delay: 8.8s; --duration: 1.6s;" class="fall-on-hover">then</span>
             <span style="--delay: 8.9s; --duration: 1.4s;" class="fall-on-hover">joining.</span>
         </div>
+        <br>
     </div>
 
 <audio id="thunderSound" src="https://github.com/viltu08/Monsoon/blob/e06d9add0208069b2fcc40ec6effd96e3257e56d/Fall/thunder.mp3?raw=true" preload="auto"></audio>
 
-
     <script>
         const spans = document.querySelectorAll('.fall-on-hover');
         const thunderSound = document.getElementById('thunderSound');
-        const hoverMessage = document.getElementById('hoverMessage');
 
         spans.forEach(span => {
             span.addEventListener('mouseover', () => {
                 span.classList.add('falling');
                 document.body.style.background = '#2a547e'; // Change background to dark navy
-                hoverMessage.style.opacity = '0'; // Hide the message
 
                 // Play the thunder sound if not already playing
                 if (thunderSound.paused) {

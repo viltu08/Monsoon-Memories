@@ -427,34 +427,33 @@ h1 {
       
     </div>
 
-    <audio id="thunderSound" src="https://github.com/viltu08/Monsoon/blob/003a26045546b44606cf685e85d1f20823ed5b5c/Float/water-flow-sound-200050.mp3?raw=true" preload="auto"></audio>
+    <audio id="riverSound" src="https://raw.githubusercontent.com/viltu08/Monsoon-Memories/d2a69b2109791040c86b24188f6224c3fcd97583/water-river-splashing-smooth-28355.mp3" preload="auto"></audio>
 
-    <script>
-        const spans = document.querySelectorAll('.fall-on-hover');
-        const thunderSound = document.getElementById('thunderSound');
-        const hoverMessage = document.getElementById('hoverMessage');
+        <script>
+            const spans = document.querySelectorAll('.fall-on-hover');
+            const riverSound = document.getElementById('riverSound');
 
-        spans.forEach(span => {
-            span.addEventListener('mouseover', () => {
-                span.classList.add('ripple'); // Add ripple effect on hover
-                span.classList.add('hovered'); // Add hovered class to increase letter spacing
-                document.body.style.background = '#2a547e'; // Change background to dark navy
-                hoverMessage.style.opacity = '0'; // Hide the message
+            spans.forEach(span => {
+                span.addEventListener('mouseover', () => {
+                    span.classList.add('ripple'); // Add ripple effect on hover
+                    span.classList.add('hovered'); // Add hovered class to increase letter spacing
+                    document.body.style.background = '#2a547e'; // Change background to dark navy
 
-                // Play the thunder sound if not already playing
-                if (thunderSound.paused) {
-                    thunderSound.loop = true; // Loop the audio
-                    thunderSound.play();
-                }
+                    // Play the river sound if not already playing
+                    if (riverSound.paused) {
+                        riverSound.loop = true; // Loop the audio
+                        riverSound.play().catch(error => console.error('Error playing audio:', error));
+                    }
+                });
             });
-        });
 
-        spans.forEach(span => {
-            span.addEventListener('animationend', () => {
-                span.classList.remove('ripple'); // Remove ripple class after animation
-                span.style.transform = 'translateY(0)'; // Reset transform for continuous movement
+            spans.forEach(span => {
+                span.addEventListener('animationend', () => {
+                    span.classList.remove('ripple'); // Remove ripple class after animation
+                    span.style.transform = 'translateY(0)'; // Reset transform for continuous movement
+                });
             });
-        });
-    </script>
+        </script>
+    </div>
 </body>
 </html>

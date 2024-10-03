@@ -8,11 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 
     <style>
-        /* The Javascript in this code has been generated using ChatGPT*/
-
         @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 
         * {
@@ -60,64 +58,46 @@
         }
 
         h1 {
-            margin: 20px;
             color: white;
             text-align: center;
             font-size: 80px;
             letter-spacing: 4px;
+            position: fixed; /* Fixed position */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust for element size */
+            z-index: 1; /* Ensure it's on top */
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 20px 0;
-            display: flex;
-            flex-direction: column;
-            /* Stack buttons vertically */
-            align-items: center;
-            justify-content: center;
+        .link {
+            color: white; /* Link color */
+            font-size: 24px; /* Font size */
+            position: absolute; /* Position for fixed placement */
+            z-index: 0; /* Ensure links are below the heading */
+            text-decoration: none; /* Remove underline */
+            animation: float 2s ease-in-out infinite; /* Floating effect */
         }
 
-        ul li {
-            display: flex;
-            justify-content: center;
-            /* Center items in the row */
-            width: 100%;
-            /* Use full width */
-            margin-bottom: 20px;
-            /* Space between the two rows */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-2px); /* Slight upward movement */
+            }
         }
 
-        a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            padding: 20px;
-            background-color: #002D62;
-            border-radius: 20px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.4s ease, transform 0.2s ease;
-            min-width: 150px;
-            /* Minimum width for buttons */
-            margin: 0 10px;
-            /* Horizontal margin for gaps */
-        }
-
-        .listen-button {
-            flex-grow: 1;
-            /* Expand to fill the space */
-            margin: 0 10px;
-            /* Maintain gap */
-        }
-
-        a:hover {
-            background-color: #8BDA85;
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+        /* Fixed positions for the links */
+        .link1 { top: 20%; left: 10%; }
+        .link2 { top: 30%; left: 50%; }
+        .link3 { top: 70%; left: 20%; }
+        .link4 { top: 80%; left: 70%; }
+        .link5 { top: 60%; left: 80%; }
+        .link6 { top: 10%; left: 30%; }
+        .link7 { top: 40%; left: 10%; }
+        .link8 { top: 15%; left: 75%; } /* Moved to top zone */
+        .link9 { top: 90%; left: 40%; }
+        .link10 { top: 25%; left: 60%; }
 
         .bokeh {
             position: absolute;
@@ -128,20 +108,13 @@
             transform: translate(-50%, -50%);
         }
 
-        footer {
-            margin-top: 20px;
-            color: white;
-            text-align: center;
-        }
-
         @media only screen and (max-width: 600px) {
             h1 {
                 font-size: 48px;
             }
 
-            ul {
-                flex-direction: column;
-                gap: 10px;
+            .link {
+                font-size: 20px; /* Adjust font size for mobile */
             }
         }
     </style>
@@ -151,17 +124,16 @@
 
     <h1>Monsoon Memories</h1>
 
-    <div>
-        <ul>
-            <li>
-                <a href="rain at three/">Rain at Three</a>
-            </li>
-        </ul>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Vishakha Ruhela</p>
-    </footer>
+    <a class="link link1" href="rain at three/">Rain at Three</a>
+    <a class="link link2" href="somewhere else/">Somewhere Else</a>
+    <a class="link link3" href="drizzle days/">Drizzle Days</a>
+    <a class="link link4" href="pitter patter/">Pitter Patter</a>
+    <a class="link link5" href="stormy nights/">Stormy Nights</a>
+    <a class="link link6" href="wet walks/">Wet Walks</a>
+    <a class="link link7" href="cloud gazing/">Cloud Gazing</a>
+    <a class="link link8" href="splashing puddles/">Splashing Puddles</a> <!-- Moved to top zone -->
+    <a class="link link9" href="thunder rumble/">Thunder Rumble</a>
+    <a class="link link10" href="lightning flash/">Lightning Flash</a>
 
     <script>
         function getRandomColor() {
@@ -194,6 +166,12 @@
 
         // Create a new bokeh every 800 milliseconds
         setInterval(createBokeh, 800);
+
+        // Change cursor to lightning symbol on hover
+        const links = document.querySelectorAll('.link');
+        links.forEach(link => {
+            link.style.cursor = 'url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Cpath fill=\'white\' d=\'M12 2C10.9 2 10 2.9 10 4s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0-4c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z\'/%3E%3C/svg%3E") 16 0, auto';
+        });
     </script>
 </body>
 

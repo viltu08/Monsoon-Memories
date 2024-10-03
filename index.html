@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monsoon Memories</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+    <style>
+        /* The Javascript in this code has been generated using ChatGPT*/
+
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background: linear-gradient(45deg, #7CB9E8, #002D62);
+            }
+
+            25% {
+                background: linear-gradient(45deg, #002D62, cornflowerblue);
+            }
+
+            50% {
+                background: linear-gradient(45deg, lightgrey, cornflowerblue);
+            }
+
+            75% {
+                background: linear-gradient(45deg, lightgrey, cornflowerblue);
+            }
+
+            100% {
+                background: linear-gradient(45deg, #7CB9E8, #002D62);
+            }
+        }
+
+        body {
+            font-family: 'Inconsolata', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #7CB9E8;
+            padding: 20px;
+            animation: gradient-animation 10s infinite;
+            background-size: 300% 300%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin: 20px;
+            color: white;
+            text-align: center;
+            font-size: 80px;
+            letter-spacing: 4px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            /* Stack buttons vertically */
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: center;
+            /* Center items in the row */
+            width: 100%;
+            /* Use full width */
+            margin-bottom: 20px;
+            /* Space between the two rows */
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            background-color: #002D62;
+            border-radius: 20px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.4s ease, transform 0.2s ease;
+            min-width: 150px;
+            /* Minimum width for buttons */
+            margin: 0 10px;
+            /* Horizontal margin for gaps */
+        }
+
+        .listen-button {
+            flex-grow: 1;
+            /* Expand to fill the space */
+            margin: 0 10px;
+            /* Maintain gap */
+        }
+
+        a:hover {
+            background-color: #8BDA85;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+            transform: translate(-50%, -50%);
+        }
+
+        footer {
+            margin-top: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 48px;
+            }
+
+            ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Monsoon Memories</h1>
+
+    <div>
+        <ul>
+            <li>
+                <a href="Fall/">Rain at Three</a>
+                <a href="Float/">Float</a>
+                <a href="Flow/">Flow</a>
+            </li>
+            <li>
+                <a href="Soundscape/" class="listen-button">Listen</a>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vishakha Ruhela</p>
+    </footer>
+
+    <script>
+        function getRandomColor() {
+            const colors = [
+                'rgba(0, 102, 204, 0.05)',
+                'rgba(0, 153, 255, 0.05)',
+                'rgba(51, 153, 255, 0.05)',
+                'rgba(0, 204, 255, 0.05)',
+                'rgba(51, 204, 255, 0.05)'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function createBokeh() {
+            const bokeh = document.createElement('div');
+            bokeh.className = 'bokeh';
+
+            const size = Math.random() * 100 + 50; // Random size
+            bokeh.style.width = `${size}px`;
+            bokeh.style.height = `${size}px`;
+
+            const color1 = getRandomColor();
+            const color2 = getRandomColor();
+            bokeh.style.background = `radial-gradient(circle, ${color1} 0%, ${color2} 50%)`;
+
+            bokeh.style.left = `${Math.random() * window.innerWidth}px`;
+            bokeh.style.top = `${Math.random() * window.innerHeight}px`;
+            document.body.appendChild(bokeh);
+        }
+
+        // Create a new bokeh every 800 milliseconds
+        setInterval(createBokeh, 800);
+    </script>
+</body>
+
+</html>

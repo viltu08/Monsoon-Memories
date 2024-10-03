@@ -12,10 +12,12 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+            overflow: hidden; /* Prevents scrolling when video is cropped */
         }
         video {
-            max-width: 100%;
-            height: auto;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: cover; /* Crop the video instead of resizing */
         }
     </style>
 </head>

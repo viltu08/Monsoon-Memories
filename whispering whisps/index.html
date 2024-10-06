@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monsoon Blues Gradients</title>
+    <title>Whispering Whisps</title>
     <style>
         * {
             margin: 0;
@@ -84,43 +84,43 @@
 <body>
     <div class="container">
         <!-- Create 10 gradient zones -->
-        <div class="gradient-zone link" onmouseover="playSound('audio1')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio1')" onmouseout="stopSound('audio1')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
-            <audio id="audio1" src="audio/monsoon1.mp3"></audio>
+            <audio id="audio1" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/Bansuri.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio2')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio2')" onmouseout="stopSound('audio2')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
-            <audio id="audio2" src="audio/monsoon2.mp3"></audio>
+            <audio id="audio2" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/Birds.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio3')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio3')" onmouseout="stopSound('audio3')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
-            <audio id="audio3" src="audio/monsoon3.mp3"></audio>
+            <audio id="audio3" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/Raaga.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio4')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio4')" onmouseout="stopSound('audio4')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
-            <audio id="audio4" src="audio/monsoon4.mp3"></audio>
+            <audio id="audio4" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/temple.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio5')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio5')" onmouseout="stopSound('audio5')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
-            <audio id="audio5" src="audio/monsoon5.mp3"></audio>
+            <audio id="audio5" src="https://github.com/viltu08/Monsoon-Memories/blob/8a15bb0544bdfc59fe84bc30b9428aa5e99cf665/drums.wav?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio6')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio6')" onmouseout="stopSound('audio6')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
-            <audio id="audio6" src="audio/monsoon6.mp3"></audio>
+            <audio id="audio6" src="https://github.com/viltu08/Monsoon-Memories/blob/8a15bb0544bdfc59fe84bc30b9428aa5e99cf665/thunder.wav?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio7')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio7')" onmouseout="stopSound('audio7')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
             <audio id="audio7" src="audio/monsoon7.mp3"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio8')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio8')" onmouseout="stopSound('audio8')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
             <audio id="audio8" src="audio/monsoon8.mp3"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio9')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio9')" onmouseout="stopSound('audio9')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
             <audio id="audio9" src="audio/monsoon9.mp3"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio10')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" onmouseover="playSound('audio10')" onmouseout="stopSound('audio10')" style="--random-size: calc(0.5 + Math.random())">
             <div class="gradient"></div>
             <audio id="audio10" src="audio/monsoon10.mp3"></audio>
         </div>
@@ -135,6 +135,25 @@
                 audio.currentTime = 0;
                 audio.volume = 0.05;
                 audio.play();
+            }
+        }
+
+        function stopSound(audioId) {
+            const audio = document.getElementById(audioId);
+            if (audio) {
+                let fadeOutDuration = 5000; // 5 seconds
+                let fadeStep = 0.05;
+                let fadeInterval = fadeOutDuration / (audio.volume / fadeStep);
+                
+                let fadeOut = setInterval(() => {
+                    if (audio.volume > fadeStep) {
+                        audio.volume -= fadeStep;
+                    } else {
+                        audio.volume = 0;
+                        audio.pause();
+                        clearInterval(fadeOut);
+                    }
+                }, fadeInterval);
             }
         }
 

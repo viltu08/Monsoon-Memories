@@ -6,25 +6,20 @@
     <title>Chai</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
-            overflow: hidden; /* Prevents scrolling when video is cropped */
+            overflow: hidden;
         }
-        iframe {
+        video {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            border: none;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://www.youtube.com/embed/eIJdU-BUNSo?autoplay=1&mute=0&controls=0&loop=1&playlist=eIJdU-BUNSo" allow="autoplay" allowfullscreen></iframe>
+    <video src="https://github.com/viltu08/Monsoon-Memories/blob/20ed036e06da7e022931e4212f37c6f01291df43/Chai%20trimmed.mp4?raw=true" autoplay loop ></video>
 </body>
 </html>

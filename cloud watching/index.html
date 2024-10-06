@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whispering Whisps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #4a90e2, #001f3f);
+            cursor: none; /* Hide default cursor */
+        }
+
+        .custom-cursor {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid white;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            height: 100vh;
+            width: 100vw;
+            padding: 20px;
+        }
+
+        .gradient-zone {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100px + (200 * var(--random-size))px); /* Variable sizes */
+            width: calc(100px + (200 * var(--random-size))px); /* Variable sizes */
+            border-radius: 50%;
+            overflow: hidden;
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)) blur(30px);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            transform: scale(calc(0.5 + var(--random-size))); /* Different scales */
+        }
+
+        .gradient-zone:hover {
+            transform: scale(calc(1.1 + var(--random-size)));
+        }
+
+        .gradient {
+            height: 100%;
+            width: 100%;
+            background: radial-gradient(circle, #4a90e2, #001f3f, #34495e);
+            animation: smokeEffect 15s ease infinite;
+            background-size: 200% 200%;
+            transition: background 0.3s ease;
+        }
+
+        .gradient-zone:hover .gradient {
+            background: radial-gradient(circle, white, cornflowerblue);
+        }
+
+        @keyframes smokeEffect {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Create 10 gradient zones -->
+        <div class="gradient-zone link" onmouseover="playSound('audio1')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio1" src="audio/monsoon1.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio2')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio2" src="audio/monsoon2.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio3')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio3" src="audio/monsoon3.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio4')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio4" src="audio/monsoon4.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio5')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio5" src="audio/monsoon5.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio6')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio6" src="audio/monsoon6.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio7')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio7" src="audio/monsoon7.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio8')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio8" src="audio/monsoon8.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio9')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio9" src="audio/monsoon9.mp3"></audio>
+        </div>
+        <div class="gradient-zone link" onmouseover="playSound('audio10')" style="--random-size: calc(0.5 + Math.random())">
+            <div class="gradient"></div>
+            <audio id="audio10" src="audio/monsoon10.mp3"></audio>
+        </div>
+    </div>
+
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <script>
+        function playSound(audioId) {
+            const audio = document.getElementById(audioId);
+            if (audio) {
+                audio.currentTime = 0;
+                audio.volume = 0.05;
+                audio.play();
+            }
+        }
+
+        // Custom cursor implementation
+        const customCursor = document.getElementById('customCursor');
+
+        document.addEventListener('mousemove', (e) => {
+            customCursor.style.left = e.pageX + 'px';
+            customCursor.style.top = e.pageY + 'px';
+        });
+
+        // Change cursor to gradient circle on hover
+        const links = document.querySelectorAll('.link');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.cursor = 'url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Cdefs%3E%3ClinearGradient id=\'gradient1\' x1=\'0%\' y1=\'0%\' x2=\'100%\' y2=\'100%\'%3E%3Cstop offset=\'0%\' style=\'stop-color:%237CB9E8;stop-opacity:1\'/%3E%3Cstop offset=\'100%\' style=\'stop-color:%23002D62;stop-opacity:1\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\' fill=\'url(%23gradient1)\'/%3E%3C/svg%3E") 12 12, auto'; // Gradient circle cursor
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.cursor = 'auto'; // Reset cursor
+            });
+        });
+    </script>
+</body>
+</html>

@@ -28,8 +28,14 @@
 
         h1 {
             margin-bottom: 20px;
-            transition: color 0.5s;
+            transition: color 0.5s, opacity 5s;
             color: #6699cc;
+            opacity: 1;
+        }
+
+        h1.fade-out {
+            opacity: 0;
+            pointer-events: none; /* Prevent hover interaction after fading out */
         }
 
         .poem {
@@ -66,7 +72,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Rain at Three <br>by Tishani Doshi</h1>
+        <h1 id="title">Rain at Three <br>by Tishani Doshi</h1>
         <div class="poem">
             <!-- Poem content as before -->
             <span style="--delay: 0s; --duration: 1s;" class="fall-on-hover">Rain</span>
@@ -168,6 +174,11 @@
     <script>
         const spans = document.querySelectorAll('.fall-on-hover');
         const thunderSound = document.getElementById('thunderSound');
+        const title = document.getElementById('title');
+
+        title.addEventListener('mouseover', () => {
+            title.classList.add('fade-out');
+        });
 
         spans.forEach(span => {
             span.addEventListener('mouseover', () => {

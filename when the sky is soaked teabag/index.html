@@ -29,10 +29,16 @@
 }
 
 h1 {
-    margin-bottom: 20px;
-    transition: color 0.5s;
-    color: #6699cc;
-}
+            margin-bottom: 20px;
+            transition: color 0.5s, opacity 5s;
+            color: #6699cc;
+            opacity: 1;
+        }
+
+        h1.fade-out {
+            opacity: 0;
+            pointer-events: none; /* Prevent hover interaction after fading out */
+        }
 
 .poem {
     font-size: 18px;
@@ -67,15 +73,11 @@ h1 {
     color: #001F3F; /* Darker blue color */
 }
 
-.message {
-    color: #6699cc;
-    transition: opacity 0.5s;
-}
 </style>
 </head>
 <body>
     <div class="container">
-        <h1>When the sky is a soaked teabag <br>by Anannya Dasghosh</h1>
+        <h1 id="title">When the sky is a soaked teabag <br>by Anannya Dasghosh</h1>
         <div class="poem">
             <span style="--delay: 0s;" class="fall-on-hover">Rain—</span>
             <span style="--delay: 0.1s;" class="fall-on-hover">the</span>
@@ -425,13 +427,17 @@ h1 {
         </div>
         <br><br>
       
-    </div>
 
     <audio id="riverSound" src="https://raw.githubusercontent.com/viltu08/Monsoon-Memories/d2a69b2109791040c86b24188f6224c3fcd97583/water-river-splashing-smooth-28355.mp3" preload="auto"></audio>
 
         <script>
             const spans = document.querySelectorAll('.fall-on-hover');
             const riverSound = document.getElementById('riverSound');
+            const title = document.getElementById('title');
+
+title.addEventListener('mouseover', () => {
+    title.classList.add('fade-out');
+});
 
             spans.forEach(span => {
                 span.addEventListener('mouseover', () => {

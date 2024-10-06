@@ -448,8 +448,10 @@ title.addEventListener('mouseover', () => {
                     // Play the river sound if not already playing
                     if (riverSound.paused) {
                         riverSound.loop = true; // Loop the audio
+						 riverSound.volume = 0.05;
                         riverSound.play().catch(error => console.error('Error playing audio:', error));
                     }
+                    
                 });
             });
 

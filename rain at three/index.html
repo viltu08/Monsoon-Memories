@@ -185,6 +185,7 @@
                 // Play the thunder sound if not already playing
                 if (thunderSound.paused) {
                     thunderSound.loop = true; // Loop the audio
+                    thunderSound.volume = 0.05;
                     thunderSound.play();
                 }
             });

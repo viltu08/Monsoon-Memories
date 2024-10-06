@@ -141,7 +141,7 @@
         function stopSound(audioId) {
             const audio = document.getElementById(audioId);
             if (audio) {
-                let fadeOutDuration = 5000; // 5 seconds
+                let fadeOutDuration = 0; // 
                 let fadeStep = 0.05;
                 let fadeInterval = fadeOutDuration / (audio.volume / fadeStep);
                 

@@ -29,32 +29,28 @@
             transform: translate(-50%, -50%);
         }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 20px;
-            height: 100vh;
-            width: 100vw;
-            padding: 20px;
+        .floating-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .gradient-zone {
-            position: relative;
+            position: absolute;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: calc(100px + (200 * var(--random-size))px); /* Variable sizes */
-            width: calc(100px + (200 * var(--random-size))px); /* Variable sizes */
+            height: 150px;
+            width: 150px;
             border-radius: 50%;
             overflow: hidden;
             filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)) blur(30px);
             transition: transform 0.3s ease, filter 0.3s ease;
-            transform: scale(calc(0.5 + var(--random-size))); /* Different scales */
+            animation: floatAnimation linear infinite;
         }
 
         .gradient-zone:hover {
-            transform: scale(calc(1.1 + var(--random-size)));
+            transform: scale(1.1);
         }
 
         .gradient {
@@ -76,51 +72,59 @@
             100% { background-position: 0% 50%; }
         }
 
+        @keyframes floatAnimation {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(20px) translateY(-10px); }
+            50% { transform: translateX(-20px) translateY(10px); }
+            75% { transform: translateX(10px) translateY(-20px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
         audio {
             display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="floating-container">
         <!-- Create 10 gradient zones -->
-        <div class="gradient-zone link" onmouseover="playSound('audio1')" onmouseout="stopSound('audio1')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 10%; left: 10%; transform: scale(calc(0.5 + Math.random())); animation-duration: 10s;" onmouseover="playSound('audio1')" onmouseout="stopSound('audio1')">
             <div class="gradient"></div>
             <audio id="audio1" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/Bansuri.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio2')" onmouseout="stopSound('audio2')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 20%; left: 70%; transform: scale(calc(0.5 + Math.random())); animation-duration: 12s;" onmouseover="playSound('audio2')" onmouseout="stopSound('audio2')">
             <div class="gradient"></div>
             <audio id="audio2" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/Birds.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio3')" onmouseout="stopSound('audio3')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 50%; left: 40%; transform: scale(calc(0.5 + Math.random())); animation-duration: 8s;" onmouseover="playSound('audio3')" onmouseout="stopSound('audio3')">
             <div class="gradient"></div>
             <audio id="audio3" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/Raaga.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio4')" onmouseout="stopSound('audio4')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 70%; left: 20%; transform: scale(calc(0.5 + Math.random())); animation-duration: 11s;" onmouseover="playSound('audio4')" onmouseout="stopSound('audio4')">
             <div class="gradient"></div>
             <audio id="audio4" src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/temple.mp3?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio5')" onmouseout="stopSound('audio5')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 80%; left: 80%; transform: scale(calc(0.5 + Math.random())); animation-duration: 9s;" onmouseover="playSound('audio5')" onmouseout="stopSound('audio5')">
             <div class="gradient"></div>
             <audio id="audio5" src="https://github.com/viltu08/Monsoon-Memories/blob/8a15bb0544bdfc59fe84bc30b9428aa5e99cf665/drums.wav?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio6')" onmouseout="stopSound('audio6')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 15%; left: 60%; transform: scale(calc(0.5 + Math.random())); animation-duration: 13s;" onmouseover="playSound('audio6')" onmouseout="stopSound('audio6')">
             <div class="gradient"></div>
             <audio id="audio6" src="https://github.com/viltu08/Monsoon-Memories/blob/8a15bb0544bdfc59fe84bc30b9428aa5e99cf665/thunder.wav?raw=true"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio7')" onmouseout="stopSound('audio7')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 30%; left: 30%; transform: scale(calc(0.5 + Math.random())); animation-duration: 14s;" onmouseover="playSound('audio7')" onmouseout="stopSound('audio7')">
             <div class="gradient"></div>
             <audio id="audio7" src="audio/monsoon7.mp3"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio8')" onmouseout="stopSound('audio8')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 40%; left: 90%; transform: scale(calc(0.5 + Math.random())); animation-duration: 10s;" onmouseover="playSound('audio8')" onmouseout="stopSound('audio8')">
             <div class="gradient"></div>
             <audio id="audio8" src="audio/monsoon8.mp3"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio9')" onmouseout="stopSound('audio9')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 60%; left: 10%; transform: scale(calc(0.5 + Math.random())); animation-duration: 15s;" onmouseover="playSound('audio9')" onmouseout="stopSound('audio9')">
             <div class="gradient"></div>
             <audio id="audio9" src="audio/monsoon9.mp3"></audio>
         </div>
-        <div class="gradient-zone link" onmouseover="playSound('audio10')" onmouseout="stopSound('audio10')" style="--random-size: calc(0.5 + Math.random())">
+        <div class="gradient-zone link" style="top: 90%; left: 50%; transform: scale(calc(0.5 + Math.random())); animation-duration: 12s;" onmouseover="playSound('audio10')" onmouseout="stopSound('audio10')">
             <div class="gradient"></div>
             <audio id="audio10" src="audio/monsoon10.mp3"></audio>
         </div>
@@ -141,7 +145,7 @@
         function stopSound(audioId) {
             const audio = document.getElementById(audioId);
             if (audio) {
-                let fadeOutDuration = 0; // 
+                let fadeOutDuration = 0; //
                 let fadeStep = 0.05;
                 let fadeInterval = fadeOutDuration / (audio.volume / fadeStep);
                 

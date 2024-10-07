@@ -113,7 +113,7 @@ h1 {
             <span style="--delay: 3.1s;" class="fall-on-hover">after</span>
             <span style="--delay: 3.2s;" class="fall-on-hover">a</span>
             <span style="--delay: 3.3s;" class="fall-on-hover">heavy</span>
-            <span style="--delay: 3.4s;" class="fall-on-hover">dpwnpour,</span>
+            <span style="--delay: 3.4s;" class="fall-on-hover">downpour,</span>
             <span style="--delay: 3.5s;" class="fall-on-hover">crumbled</span><br>
             <span style="--delay: 3.6s;" class="fall-on-hover">sunsets</span>
             <span style="--delay: 3.7s;" class="fall-on-hover">of</span>
@@ -428,7 +428,7 @@ h1 {
         <br><br>
       
 
-    <audio id="riverSound" src="https://raw.githubusercontent.com/viltu08/Monsoon-Memories/d2a69b2109791040c86b24188f6224c3fcd97583/water-river-splashing-smooth-28355.mp3" preload="auto"></audio>
+    <audio id="riverSound" src="https://github.com/viltu08/Monsoon-Memories/blob/1d8effaa7a110c09f0f7da44d99131a80c941114/Teabag%202.m4a?raw=true" preload="auto" type="audio/m4a"></audio>
 
         <script>
             const spans = document.querySelectorAll('.fall-on-hover');
@@ -448,7 +448,7 @@ title.addEventListener('mouseover', () => {
                     // Play the river sound if not already playing
                     if (riverSound.paused) {
                         riverSound.loop = true; // Loop the audio
-						 riverSound.volume = 0.05;
+						 riverSound.volume = 1;
                         riverSound.play().catch(error => console.error('Error playing audio:', error));
                     }
                     

@@ -55,7 +55,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            cursor: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\' stroke=\'white\' stroke-width=\'2\' fill=\'none\'/%3E%3C/svg%3E') 12 12, auto; /* Outlined white circle cursor */
+            cursor: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22 stroke=%22white%22 stroke-width=%222%22 fill=%22none%22/%3E%3C/svg%3E') 12 12, auto; /* Outlined white circle cursor */
         }
 
               h1 {
@@ -77,6 +77,7 @@
             z-index: 0; /* Ensure links are below the heading */
             text-decoration: none; /* Remove underline */
             animation: float 5s ease-in-out infinite; /* Floating effect */
+            cursor: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22 stroke=%22cornflowerblue%22 stroke-width=%222%22 fill=%22none%22/%3E%3C/svg%3E') 12 12, auto; /* Custom cursor for links */
         }
 
         @keyframes float {
@@ -87,8 +88,8 @@
                 transform: translateY(-10px); /* Slight upward movement */
             }
         }
-		
-		@keyframes hover-float {
+        
+        @keyframes hover-float {
     0%, 100% {
         transform: translate(-50%, -50%) translateY(0);
     }
@@ -128,35 +129,35 @@
                 font-size: 20px; /* Adjust font size for mobile */
             }
         }
-		
-		
-		 /* Hover effect for h1 */
- .hover-box {
-    display: none; /* Hide initially */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    backdrop-filter: blur(0.1px);
-    color: white;
-    font-size: 16px;
-    z-index: 2;
-    text-align: left;
-    overflow-y: auto;
-    max-height: 70vh;
-    pointer-events: none; /* Prevent hover-box from triggering flicker */
-}
+        
+        
+         /* Hover effect for h1 */
+  .hover-box {
+            display: none; /* Hide initially */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(0.1px);
+            color: white;
+            font-size: 16px;
+            z-index: 2;
+            text-align: left;
+            overflow-y: auto;
+            max-height: 70vh;
+            pointer-events: none; /* Prevent hover-box from triggering flicker */
+        }
 
-h1:hover + .hover-box {
-    display: block;
-	color: cornflowerblue;
-    animation: hover-float 5s ease-in-out infinite; /* Floating animation */
-}
+        h1:hover + .hover-box {
+            display: block;
+            color: cornflowerblue;
+            animation: hover-float 5s ease-in-out infinite; /* Floating animation */
+        }
     </style>
 </head>
 
@@ -166,6 +167,8 @@ h1:hover + .hover-box {
     <div class="hover-box">
         A love letter to the Indian Monsoon season, this is a digital space that abstracts my core memories of those lush rainy days. It calls upon you to immerse yourself in the sounds, sights and sensations of the rhythmic raindrops, the overflowing river canals quenching those thirsty fields at my home in Uttar Pradesh after a long summer, and the joy of rain-soaked streets. Some expressions capture the relaxed mood of monsoon evenings, the old radio playing retro Bollywood songs where people fall in love while getting soaked in the Monsoon blues, the warmth of sharing hot masala chai and deep-fried pakoras with your family and friends, some quiet moments of reflection. It knits three Indian poetesses in its language, whose poems unfold as typographic playfields. Small stories have the potential to tell a larger narrative. All my tiny fragments come together to relive moments from my culture and shared traditions by creating a small bubble of home away from home. I explore poetic expressions by engaging with web and motion design. The digital tools provide me with new modes of expressing complex narratives. Sometimes, the results are simple, yet the complexity lies in its foundational structure. I craft this space with curiosity, complexity and code. This experimentation is an evolving exercise in a handmade web that shapes up organically instead of using a conventional rigid structure. By inviting others to interact and experience the memories with me, I try invoking nostalgia which may lead them to bring forward their own associations with home.
     </div>
+    
+     <audio id="hoverAudio" src="https://github.com/viltu08/Monsoon-Memories/blob/f105170312597784227534d70335651588aa496b/Monsoon.m4a?raw=true" type="audio/m4a"></audio>
 
     <a class="link link1" href="rain at three/">Rain at Three</a>
     <a class="link link2" href="chai/">Chai</a>
@@ -215,6 +218,19 @@ h1:hover + .hover-box {
             link.addEventListener('mouseleave', () => {
                 link.style.cursor = 'auto'; // Reset cursor
             });
+        });
+
+        // Add event listeners to play/pause audio on hover of h1
+        const heading = document.querySelector('h1');
+        const hoverAudio = document.getElementById('hoverAudio');
+
+        heading.addEventListener("mouseenter", () => {
+            hoverAudio.play(); // Play audio when hovered
+        });
+
+        heading.addEventListener("mouseleave", () => {
+            hoverAudio.pause(); // Pause audio when no longer hovered
+            hoverAudio.currentTime = 0; // Reset the audio playback position
         });
     </script>
 </body>

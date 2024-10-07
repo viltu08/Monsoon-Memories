@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI's Monsoon Musings</title>
+    <title>Monsoon Musings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,34 +19,146 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            animation: gradient-animation 15s ease infinite;
-            background: linear-gradient(45deg, #7CB9E8, #002D62);
+            font-family: 'Inconsolata', monospace;
+            animation: gradient-animation 20s ease infinite;
+            background: radial-gradient(circle, #7CB9E8, #002D62, #6495ED);
             background-size: 400% 400%;
+            position: relative;
         }
 
         @keyframes gradient-animation {
             0% {
-                background: linear-gradient(45deg, #7CB9E8, #002D62);
+                background: radial-gradient(circle, #7CB9E8, #002D62, #6495ED);
             }
 
             25% {
-                background: linear-gradient(45deg, #002D62, cornflowerblue);
+                background: radial-gradient(circle, #002D62, #6495ED, #7CB9E8);
             }
 
             50% {
-                background: linear-gradient(45deg, #002D62, cornflowerblue);
+                background: radial-gradient(circle, #6495ED, #7CB9E8, #002D62);
             }
 
             75% {
-                background: linear-gradient(45deg, #002D62, #7CB9E8);
+                background: radial-gradient(circle, #7CB9E8, #6495ED, #002D62);
             }
 
             100% {
-                background: linear-gradient(45deg, #7CB9E8, #002D62);
+                background: radial-gradient(circle, #7CB9E8, #002D62, #6495ED);
+            }
+        }
+
+        .button {
+            font-family: 'Inconsolata', monospace;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .floating-words {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .word {
+            position: absolute;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: float 30s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(50px, 100px);
+            }
+            100% {
+                transform: translate(-50px, -100px);
             }
         }
     </style>
 </head>
 <body>
+    <div class="floating-words" id="floating-words"></div>
+    <button class="button link">Download Poem</button>
+    <script>
+        const words = [
+            "Awakening", "Cascade", "Damp", "Deluge", "Verdure", "Serene", "Submerged", "Torrential", "Gusty", "Pelting", "Monsoon rhythm", "Whispering rain", "Torrents", "Waterlogged", "Refreshing", "Stillness", "Nurtured", "Floodplains", "Raindrops", "Flooded fields", "Mist-filled", "Monsoon lullaby", "Watercolor skies", "Whispers of rain", "Cascading water", "Damp soil", "Overflowing river", "Murky", "Saturated", "Melancholy", "Soaked", "Cool winds", "Thunderclap", "Hidden sun", "Dappled light", "Emerald leaves", "Gentle downpour", "Raindrops dancing", "Crops swaying", "Misty hills", "Echoing thunder", "Cloudburst", "Renewal", "Water-streaked", "Pittering", "Silver mist", "Rain-slicked", "Flood-ridden", "Lushness", "Soothing", "Dripping leaves", "Blustery", "Squelching", "Damp air", "Gloomy", "Rinsed", "Soothing patter", "Flooding rivers", "Rippled surface", "Quenching thirst", "Faint drizzle", "Monsoon harvest", "Wet petals", "Silken rain", "Torrid winds", "Pounding rain", "Glistening drops", "Muggy", "Monsoon breeze", "Billowing clouds", "Tidal", "Thundering waves", "Lifegiving rain", "Mellow skies", "Moist wind", "Endless rain", "Veiled sun", "Smothered light", "Water-drenched", "Sodden ground", "Slippery mud", "Blinding rain", "Tropical", "Shimmering clouds", "Drenched hair", "Leaf-strewn", "Raging storm", "Wild rivers", "Windswept", "Mist-shrouded", "Mist-soaked", "Incessant rain", "Weeping skies", "Overflowing canals", "Foggy hills", "Misty forest", "Silhouetted trees", "Raining heavily", "Silky mist", "Deluge of rain", "Lush fields", "Uplifted branches", "Torrential rains", "Flickering lightning", "Rumbling thunder", "Flooded streets", "Quicksilver rain", "Humid air", "Sopping wet", "Soggy ground", "Shivering leaves", "Overcast", "Wind-blown", "Waterlogged soil", "Summer storm", "Blurred vision", "Dancing lightning", "Sweeping wind", "Moist skies", "Splashing water", "Raging torrents", "Rumbling clouds", "Thunderous skies", "Gale", "Torrents of rain", "Dust-filled air", "Bare feet", "Dark clouds", "Drizzling mist", "Water beads", "Clear skies", "Rainbow", "Evaporating", "Wet hands", "Water ripples", "Sloshing", "River's edge", "Fallen leaves", "Churning water", "Flash floods", "Wading through", "Wet fabric", "Moist horizon", "Flowing rain", "Wet steps", "Rain-choked streams", "Flowing rivers", "Looming storm", "Mist-filled mornings", "Overcast mornings", "Parched earth", "Rainy winds", "Silver-lined clouds", "Torrid skies", "Pattering roof", "Sputtering rain", "Gleaming rain", "Rain-flooded alleys", "Crackling thunder", "Spattered windows", "Splintered clouds", "Drenched homes", "Wading water", "Forest path", "Murmuring brook", "Flooding plains", "Soothing rains", "Cooling rain", "Whispering trees", "Warm rain", "Flowing over", "Rushing waters", "Dripping windows", "Dampened soil", "Raining steadily", "Pelting drops", "Lightning’s flash", "Misty veil", "Rain-drenched air", "Rising storm", "Sodden landscape", "Scattered storms", "Teeming rain", "Dewy grass", "Gleaming rivers", "Heavy rainfall", "Glistening pavement", "Soft patter", "Muddied tracks", "Downpour of dreams", "Cooling earth", "Streaming water", "Looming clouds", "Droplets of joy", "Storm-laden skies", "Flowing freely", "Gentle ripples", "Wet whispers", "Rushing monsoon", "Flashes of light", "Moist whisper", "Water glistening", "Floodgate", "Damp tendrils", "Skies weep", "Monsoon’s embrace", "Heavens open", "Pittering path", "Floating petals", "Sinking puddles", "Leafy shelter", "Wet grass", "Rain-splashed", "Overflowing ponds", "Veins of rain", "Raining again", "Swaying leaves", "Open sky", "Scent of rain", "First drops", "Glimmering rain", "Rinsing earth", "Clapping thunder", "Rushing current", "Flooding fast", "Torrid days", "Lost in rain", "Shadows dancing", "Raining softly", "Rising mist", "Waking earth", "Thundercracks", "Gentle gusts", "Flow of rivers", "Water’s edge", "Scattered raindrops", "Overcast skies", "Looming horizon", "Sun-kissed rain", "Waters rising", "Water gushing", "Warm embrace", "Surging rain", "Restless skies", "Faint whispers", "Water’s music", "Falling softly", "Flood-rushing", "Water-kissed", "Midnight rain", "Deep currents", "Uplifted clouds", "Riverbanks", "Moist fragrance", "Slanting rain", "Shattered clouds", "Cleansing", "Resplendent", "Wafting breeze", "Crystal rain", "Gossamer rain", "Blossoming fields", "Damp gust", "Muted light", "Glowing mist", "Whisper of leaves", "Smell of rain", "Silhouettes", "Darkening skies", "Soft soil", "Velvet night", "Glowing dusk", "Longing rain", "Cascading rivers", "Feathered clouds", "Dampened steps", "Velvet clouds", "Shifting mist", "Low-hanging clouds", "Flooding fields", "Warmth of rain", "Tingling skin", "Rivulets", "Monsoon melody", "Dancing in the rain", "Showering clouds", "Lapping shores", "Wet footprints", "Mud-splattered", "Silvery threads", "Mist-drenched", "Balmy air", "Fragrant earth", "Whispers of wind", "Rushing breeze", "Shimmering streams", "Rippled puddles", "Wet breeze", "Faint glow", "Cooling drops", "Floating clouds", "Rustling leaves", "Glowing horizon", "Rain-washed", "Dew-kissed", "Shifting wind", "Gentle rush", "Scattered light", "Flooding rains", "Cool droplets", "Swirling water", "Murmuring waters", "Refreshing gust", "Slanting light", "Misty echoes", "Sweet fragrance", "Soaked footsteps", "Distant thunder", "Floating mist", "Growing roots", "Darkened earth", "Silvery rain", "Dripping clouds", "Lush rivers", "Cooling breeze", "Drenched vines", "Veiled mountain", "Softening sky", "Trembling branches", "Saturating rains", "Water-glistened", "Blossoming buds", "Gentle mist", "Shivering winds", "Monsoon mist", "Drenched streets", "Thunder-echoes", "Mist-laden", "Lush vegetation", "Roaring sky", "Rain-worn", "Serene floods", "Soaked fields", "Water-washed", "Fragrant showers", "Still rivers", "Murmuring rain", "Wild winds", "Sweeping storm", "Shimmering drops", "Gentle waves", "Watery embrace", "Flickering sky", "Calm after the storm", "Drifting mist", "Torrents of dreams", "Storm-washed", "Whispering rain", "Ebbing flow", "Rising tides", "Silver rainfall", "Quiet puddles", "Rushing rivers", "Mist-kissed air", "Glowing rain", "Raindrop symphony", "Rolling clouds", "Glistening foliage", "Drenched roots", "Whispering sky", "Raging storms", "River-whispers", "Raining flowers", "Rising rivers", "Wetland melody", "Rippled lake", "Raining softly", "Swirling storm", "Lush canopy", "Dewdrops", "Swollen rivers", "Shadows flickering", "Cloudy dawn", "Gleaming sky", "Pelting storm", "Misted forest", "Deep rivers", "Flowing freely", "Echoing droplets", "Wet whispers", "Dark skies", "Drenching torrents", "Thunder-filled skies", "Moistening", "Thunderstruck", "Fragrant showers", "Waterfall melody", "Glowing storm", "Misty waterfall", "Falling rain", "Flooding lanes", "Gleaming stones", "Monsoon flowers", "Splashes of rain", "Flooded riverbanks", "Rippling surface", "Cold breeze", "Warmth of sun", "Sunlit mist", "Rain-swept winds", "Dark shadows", "Sun-shimmering rain", "Quenching rains", "Fleeting clouds", "Cool water", "Soggy fields", "Veiled skies", "Thunderous rivers", "Roaring floods", "Water-laden breeze", "Faint sunlight", "Gentle downpour", "Shimmering air", "Softening rain", "Scent of moisture", "Monsoon sky", "Fragrant clouds", "Flooded trails", "Rain-laden breeze", "Whispering wind", "Dew-kissed fields", "Lush foliage", "Rushing flood", "Misty shoreline", "Slippery path", "Gentle sky", "Glistening forest", "Watery reflection", "Cold mist", "Raindrop echoes", "Flickering storm", "Calm rains", "Soaking fields", "Flowing earth", "Flickering horizon", "Gentle patter", "Chilly rain", "Whistling wind", "Storm-ridden skies", "Veiled horizon", "Raindrop memories", "Rushing streams", "Murmuring clouds", "Water-flooded plains", "Cool shadows", "Soft glimmers", "Rushing stream", "Floating clouds", "Lush forest", "Calm waters", "Deep mist", "Drenched earth", "Gossamer rain", "Torrential flood", "Quenching flood", "Gentle rhythm", "Flickering leaves", "Whispering leaves", "Waking rain", "Dark clouds", "Torrents of dreams", "Rippling water", "Raging flood", "Lush greenery", "Cold wind", "Drifting raindrops", "Rain-kissed path", "Winding rivers", "Leaf-draped", "Shimmering horizon", "Mist-laden air", "Cooling monsoon", "Raindrop dances", "Quiet rain", "River-scented air", "Flickering clouds", "Gossamer threads", "Cascading flood", "Rain-laden earth", "Wild water", "Echoing rain", "Floating mist", "Mist-soaked air", "Torrid storms", "Flowing rivers", "Drenched air", "Wet sky", "Dew-laden leaves", "Silvery streams", "Wild monsoon"
+        ];
+
+        document.querySelector('.button').addEventListener('click', () => {
+            const poem = generatePoem();
+            const blob = new Blob([poem], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'monsoon_poem.txt';
+            link.click();
+        });
+
+        function generatePoem() {
+            let poem = '';
+            for (let i = 0; i < 4; i++) { // Generate a 4-line poem
+                let line = '';
+                for (let j = 0; j < 5; j++) {
+                    line += words[Math.floor(Math.random() * words.length)] + ' ';
+                }
+                poem += line.trim() + '.\n';
+            }
+            return poem.trim();
+        }
+
+        function createFloatingWords() {
+            const container = document.getElementById('floating-words');
+            words.forEach(word => {
+                const wordElement = document.createElement('div');
+                wordElement.classList.add('word');
+                wordElement.textContent = word;
+                wordElement.style.top = Math.random() * 100 + '%';
+                wordElement.style.left = Math.random() * 100 + '%';
+                wordElement.style.animationDuration = (20 + Math.random() * 30) + 's';
+                container.appendChild(wordElement);
+            });
+        }
+
+        createFloatingWords();
+
+        // Change cursor to gradient circle on hover
+        const links = document.querySelectorAll('.link');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.cursor = 'url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Cdefs%3E%3ClinearGradient id=\'gradient1\' x1=\'0%\' y1=\'0%\' x2=\'100%\' y2=\'100%\'%3E%3Cstop offset=\'0%\' style=\'stop-color:%237CB9E8;stop-opacity:1\'/%3E%3Cstop offset=\'100%\' style=\'stop-color:%23002D62;stop-opacity:1\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\' fill=\'url(%23gradient1)\'/%3E%3C/svg%3E") 12 12, auto';
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.cursor = 'url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\'/%3E%3C/svg%3E") 12 12, auto'; // White outlined circle cursor
+            });
+        });
+    </script>
 </body>
 </html>

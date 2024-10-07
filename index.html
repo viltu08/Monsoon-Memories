@@ -18,28 +18,28 @@
             padding: 0;
             box-sizing: border-box;
         }
+@keyframes gradient-animation {
+    0% {
+        background: linear-gradient(45deg, #7CB9E8, #002D62);
+    }
 
-        @keyframes gradient-animation {
-            0% {
-                background: linear-gradient(45deg, #7CB9E8, #002D62);
-            }
+    25% {
+        background: linear-gradient(45deg, #002D62, cornflowerblue);
+    }
 
-            25% {
-                background: linear-gradient(45deg, #002D62, cornflowerblue);
-            }
+    50% {
+        background: linear-gradient(45deg, #002D62, cornflowerblue); /* Removed lightgrey */
+    }
 
-            50% {
-                background: linear-gradient(45deg, lightgrey, cornflowerblue);
-            }
+    75% {
+        background: linear-gradient(45deg, #002D62, #7CB9E8); /* Removed lightgrey */
+    }
 
-            75% {
-                background: linear-gradient(45deg, lightgrey, cornflowerblue);
-            }
+    100% {
+        background: linear-gradient(45deg, #7CB9E8, #002D62);
+    }
+}
 
-            100% {
-                background: linear-gradient(45deg, #7CB9E8, #002D62);
-            }
-        }
 
         body {
             font-family: 'Inconsolata', sans-serif;

@@ -46,7 +46,7 @@
             transition: transform 0.5s ease-in-out, color 1s ease-in-out;
         }
 
-        .poem-line:hover, .poem-line.hovered { 
+        .poem-line:hover, .poem-line.hovered {
             color: #001f3f;
         }
 
@@ -101,7 +101,7 @@
     </div>
 
     <audio id="background-audio" loop>
-        <source src="https://github.com/viltu08/Monsoon/blob/87c3069a1ed26daeb1fa51f8078e7190fb6730a6/Bolly.mp3?raw=true" type="audio/mpeg">
+        <source src="https://github.com/viltu08/Monsoon-Memories/blob/91b3c0dcd4e0e2dd3ae5a8e74aeaf0759b9a5dc4/Stay%20back%202.m4a?raw=true" type="audio/mp4">
         Your browser does not support the audio element.
     </audio>
 
@@ -122,10 +122,10 @@
                 link.style.animation = 'glide 5s infinite ease-in-out';
                 
                 // Start audio playback on hover
-                if (audio.paused) {
-                    audio.volume = 0.005; // Set volume to a low level
-                    audio.play();
-                }
+                audio.volume = 1; // Set volume to a low level
+                audio.play().catch(error => {
+                    console.error('Audio playback error:', error);
+                });
             });
         });
     </script>

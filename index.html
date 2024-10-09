@@ -68,6 +68,7 @@
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -50%); /* Adjust for element size */
             z-index: 1; /* Ensure it's on top */
+				  
         }
 
         .link {
@@ -141,7 +142,7 @@
             width: 80%;
             max-width: 1000px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 15px;
             backdrop-filter: blur(0.5px);
             color: white;
@@ -152,12 +153,13 @@
             overflow-y: auto;
             max-height: 100vh;
             pointer-events: none; /* Prevent hover-box from triggering flicker */
+	  
         }
 
         h1:hover + .hover-box {
             display: block;
             color: #002D62;
-            animation: hover-float 5s ease-in-out infinite; /* Floating animation */
+            animation: hover-float 5s ease-in-out infinite, gradient-animation 10s infinite; 
         }
     </style>
 </head>

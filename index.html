@@ -168,7 +168,14 @@
         A love letter to the Indian Monsoon season, this is a digital space that abstracts my core memories of those lush rainy days. It calls upon you to immerse yourself in the sounds, sights and sensations of the rhythmic raindrops, the overflowing river canals quenching those thirsty fields at my home in Uttar Pradesh after a long summer, and the joy of rain-soaked streets. Some expressions capture the relaxed mood of monsoon evenings, the old radio playing retro Bollywood songs where people fall in love while getting soaked in the Monsoon blues, the warmth of sharing hot masala chai and deep-fried pakoras with your family and friends, some quiet moments of reflection. It knits three Indian poetesses in its language, whose poems unfold as typographic playfields. Small stories have the potential to tell a larger narrative. All my tiny fragments come together to relive moments from my culture and shared traditions by creating a small bubble of home away from home. I explore poetic expressions by engaging with web and motion design. The digital tools provide me with new modes of expressing complex narratives. Sometimes, the results are simple, yet the complexity lies in its foundational structure. I craft this space with curiosity, complexity and code. This experimentation is an evolving exercise in a handmade web that shapes up organically instead of using a conventional rigid structure. By inviting others to interact and experience the memories with me, I try invoking nostalgia which may lead them to bring forward their own associations with home.
     </div>
     
-     <audio id="hoverAudio" src="https://github.com/viltu08/Monsoon-Memories/blob/f105170312597784227534d70335651588aa496b/Monsoon.m4a?raw=true" type="audio/m4a"></audio>
+     <!-- First audio element -->
+    <audio id="hoverAudio1" src="https://github.com/viltu08/Monsoon-Memories/blob/f105170312597784227534d70335651588aa496b/Monsoon.m4a?raw=true" type="audio/m4a"></audio>
+    
+    <!-- Second audio element -->
+    <audio id="hoverAudio2" src="https://github.com/viltu08/Monsoon-Memories/blob/60958b88df34afb1efb26204879730ae2566dfab/Peacock.wav?raw=true" type="audio/m4a"></audio>
+
+ <!-- Third audio element -->
+    <audio id="hoverAudio3" src="https://github.com/viltu08/Monsoon-Memories/blob/2934c86ec2f4edb5ce415af32c08e854656fa203/windchimes.mp3?raw=true" type="audio/mp3"></audio>
 
     <a class="link link1" href="rain at three/">Rain at Three</a>
     <a class="link link2" href="Monsoon Musings/">Monsoon Musings</a>
@@ -220,17 +227,34 @@
             });
         });
 
-        // Add event listeners to play/pause audio on hover of h1
-        const heading = document.querySelector('h1');
-        const hoverAudio = document.getElementById('hoverAudio');
+        // Get the audio elements
+        const hoverAudio1 = document.getElementById('hoverAudio1');
+        const hoverAudio2 = document.getElementById('hoverAudio2');
+		 const hoverAudio3 = document.getElementById('hoverAudio3');
 
+        // Set initial volumes for the two audio elements
+        hoverAudio1.volume = 1; // Set the volume for the first audio (range from 0.0 to 1.0)
+        hoverAudio2.volume = 0.1; // Set the volume for the second audio (range from 0.0 to 1.0)
+		
+	     hoverAudio3.volume = 0.1; // Set the volume for the second audio (range from 0.0 to 1.0)
+
+        // Get the heading element
+        const heading = document.querySelector('h1');
+
+        // Add event listeners to play/pause both audios on hover of h1
         heading.addEventListener("mouseenter", () => {
-            hoverAudio.play(); // Play audio when hovered
+            hoverAudio1.play(); // Play first audio
+            hoverAudio2.play(); // Play second audio
+			hoverAudio3.play(); // Play third audio
         });
 
         heading.addEventListener("mouseleave", () => {
-            hoverAudio.pause(); // Pause audio when no longer hovered
-            hoverAudio.currentTime = 0; // Reset the audio playback position
+            hoverAudio1.pause(); // Pause first audio
+            hoverAudio2.pause(); // Pause second audio
+			  hoverAudio3.pause(); // Pause third udio
+            hoverAudio1.currentTime = 0; // Reset the first audio playback position
+            hoverAudio2.currentTime = 0; // Reset the second audio playback position
+			 hoverAudio3.currentTime = 0; // Reset the second audio playback position
         });
     </script>
 </body>

@@ -7,16 +7,18 @@
     <style>
         html, body {
             margin: 0;
-            overflow: hidden;
+            padding: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden; /* Prevents scrollbars */
         }
         iframe {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
             border: none;
         }
     </style>
@@ -34,6 +36,24 @@
         }).catch(function(error) {
             console.error('Error setting the video volume:', error);
         });
+
+        function resizeIframe() {
+            var aspectRatio = 16 / 9; // Standard video aspect ratio
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+
+            if (width / height > aspectRatio) {
+                iframe.style.width = width + 'px';
+                iframe.style.height = (width / aspectRatio) + 'px';
+            } else {
+                iframe.style.width = (height * aspectRatio) + 'px';
+                iframe.style.height = height + 'px';
+            }
+        }
+
+        // Adjust iframe on load and resize
+        window.addEventListener('resize', resizeIframe);
+        resizeIframe(); // Call it initially
     </script>
 </body>
 </html>

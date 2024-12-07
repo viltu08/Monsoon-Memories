@@ -36,6 +36,23 @@
 	<script>
     const audioElement = document.querySelector('audio');
     audioElement.volume = 1; 
+
+      // Listen for messages from the parent
+window.addEventListener('message', event => {
+    if (!event.data.command) return;
+
+    const { command } = event.data;
+
+    if (command === 'mute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = true;
+        });
+    } else if (command === 'unmute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = false;
+        });
+    }
+});
 </script>
 
 </html>

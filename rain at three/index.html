@@ -13,7 +13,7 @@
             padding: 0;
             background: linear-gradient(to bottom, #87CEEB, #001F3F);
             color: white;
-            overflow: hidden;
+            overflow-y: auto;
             height: 100vh; /* Full height */
             transition: background 5s; /* Transition for background */
         }
@@ -199,6 +199,24 @@
                 // thunderSound.currentTime = 0; // Reset the sound
             });
         });
+
+        // Listen for messages from the parent
+window.addEventListener('message', event => {
+    if (!event.data.command) return;
+
+    const { command } = event.data;
+
+    if (command === 'mute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = true;
+        });
+    } else if (command === 'unmute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = false;
+        });
+    }
+});
+
     </script>
 </body>
 </html>

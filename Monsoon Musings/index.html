@@ -164,6 +164,23 @@
                 link.style.cursor = 'url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\'/%3E%3C/svg%3E") 12 12, auto'; // White outlined circle cursor
             });
         });
+
+          // Listen for messages from the parent
+window.addEventListener('message', event => {
+    if (!event.data.command) return;
+
+    const { command } = event.data;
+
+    if (command === 'mute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = true;
+        });
+    } else if (command === 'unmute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = false;
+        });
+    }
+});
     </script>
 </body>
 </html>

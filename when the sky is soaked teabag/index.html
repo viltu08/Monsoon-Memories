@@ -461,6 +461,23 @@ title.addEventListener('mouseover', () => {
                     span.style.transform = 'translateY(0)'; // Reset transform for continuous movement
                 });
             });
+
+              // Listen for messages from the parent
+window.addEventListener('message', event => {
+    if (!event.data.command) return;
+
+    const { command } = event.data;
+
+    if (command === 'mute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = true;
+        });
+    } else if (command === 'unmute') {
+        document.querySelectorAll('audio, video').forEach(media => {
+            media.muted = false;
+        });
+    }
+});
         </script>
     </div>
 </body>

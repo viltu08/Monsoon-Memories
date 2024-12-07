@@ -6,283 +6,255 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monsoon Memories</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-@keyframes gradient-animation {
-    0% {
-        background: linear-gradient(45deg, #7CB9E8, #002D62);
-    }
-
-    25% {
-        background: linear-gradient(45deg, #002D62, cornflowerblue);
-    }
-
-    50% {
-        background: linear-gradient(45deg, #002D62, cornflowerblue); /* Removed lightgrey */
-    }
-
-    75% {
-        background: linear-gradient(45deg, #002D62, #7CB9E8); /* Removed lightgrey */
-    }
-
-    100% {
-        background: linear-gradient(45deg, #7CB9E8, #002D62);
-    }
-}
-
 
         body {
             font-family: 'Inconsolata', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
-            background-color: #7CB9E8;
-            padding: 20px;
+            background: linear-gradient(45deg, #7CB9E8, #002D62);
             animation: gradient-animation 10s infinite;
-            background-size: 300% 300%;
-            text-align: center;
-            position: relative;
             overflow: hidden;
-            cursor: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22 stroke=%22white%22 stroke-width=%222%22 fill=%22none%22/%3E%3C/svg%3E') 12 12, auto; /* Outlined white circle cursor */
+            position: relative;
         }
 
-              h1 {
-            color: white;
-            text-align: center;
-            font-size: 80px;
-            letter-spacing: 4px;
-            position: fixed; /* Fixed position */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, -50%); /* Adjust for element size */
-            z-index: 1; /* Ensure it's on top */
-				  
-        }
-
-        .link {
-            color: white; /* Link color */
-            font-size: 24px; /* Font size */
-            position: absolute; /* Position for fixed placement */
-            z-index: 0; /* Ensure links are below the heading */
-            text-decoration: none; /* Remove underline */
-            animation: float 5s ease-in-out infinite; /* Floating effect */
-            cursor: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2210%22 stroke=%22cornflowerblue%22 stroke-width=%222%22 fill=%22none%22/%3E%3C/svg%3E') 12 12, auto; /* Custom cursor for links */
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
+        @keyframes gradient-animation {
+            0% {
+                background: linear-gradient(45deg, #7CB9E8, #002D62);
             }
+
             50% {
-                transform: translateY(-10px); /* Slight upward movement */
+                background: linear-gradient(45deg, #002D62, cornflowerblue);
+            }
+
+            100% {
+                background: linear-gradient(45deg, #7CB9E8, #002D62);
             }
         }
-        
-        @keyframes hover-float {
-    0%, 100% {
-        transform: translate(-50%, -50%) translateY(0);
-    }
-    50% {
-        transform: translate(-50%, -50%) translateY(-10px);
-    }
-}
-
-
-        /* Fixed positions for the links */
-        .link1 { top: 20%; left: 10%; }
-        .link2 { top: 30%; left: 50%; }
-        .link3 { top: 70%; left: 20%; }
-        .link4 { top: 80%; left: 70%; }
-        .link5 { top: 60%; left: 80%; }
-        .link6 { top: 10%; left: 30%; }
-        .link7 { top: 40%; left: 10%; }
-        .link8 { top: 15%; left: 75%; } /* Moved to top zone */
-        .link9 { top: 90%; left: 40%; }
-        .link10 { top: 25%; left: 60%; }
 
         .bokeh {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
-            transform: translate(-50%, -50%);
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
         }
 
-        @media only screen and (max-width: 600px) {
-            h1 {
-                font-size: 48px;
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
             }
 
-            .link {
-                font-size: 20px; /* Adjust font size for mobile */
+            50% {
+                transform: translateY(-20px) scale(1.1);
             }
         }
-        
-        
-         /* Hover effect for h1 */
-  .hover-box {
-            display: none; /* Hide initially */
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 1000px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.4);
+
+        .section {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 15px;
-            backdrop-filter: blur(0.5px);
+            padding: 10px;
             color: white;
-            font-size: 20px;
-	  line-height: 30px;
+            width: 400px;
+            height: auto;
+            min-height: 200px;
+            transform: translate(-50%, -50%);
+            cursor: move;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             z-index: 2;
-            text-align: center;
-            overflow-y: auto;
-            max-height: 100vh;
-            pointer-events: none; /* Prevent hover-box from triggering flicker */
-	  
         }
 
-        h1:hover + .hover-box {
-            display: block;
+        .section h2 {
+            margin: 0;
+            font-size: 18px;
             color: #002D62;
-            animation: hover-float 5s ease-in-out infinite, gradient-animation 10s infinite; 
+            padding: 8px 12px;
+            text-align: center;
+            cursor: grab;
+        }
+
+        .section-content {
+            flex-grow: 1;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .section-content iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .resizer {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: nwse-resize;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .mute-toggle {
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #004d99;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .mute-toggle:hover {
+        color: white;
         }
     </style>
 </head>
 
 <body>
+    <!-- Bokeh container -->
+    <div id="bokeh-container"></div>
 
-      <h1>Monsoon Memories</h1>
-    <div class="hover-box">
-         <span>A love letter to the Indian Monsoon season,</span><br>
-        <span>this is a digital space that abstracts my core memories of those lush rainy days.</span><br>
-        <span>It calls upon you to immerse yourself in the sounds, sights and sensations</span><br>
-        <span>of the rhythmic raindrops,</span><br>
-        <span>the overflowing river canals quenching those thirsty fields at my home in Uttar Pradesh</span><br>
-        <span>after a long summer, and the joy of rain-soaked streets.</span><br>
-        <span>Some expressions capture the relaxed mood of monsoon evenings,</span><br>
-        <span>the old radio playing retro Bollywood songs</span><br>
-        <span>where people fall in love while getting soaked in the Monsoon blues,</span><br>
-        <span>the warmth of sharing hot masala chai and deep-fried pakoras with your family and friends,</span><br>
-        <span>some quiet moments of reflection.</span><br>
-        <span>It knits three Indian poetesses in its language,</span><br>
-        <span>whose poems unfold as typographic playfields.</span><br>
-        <span>Small stories have the potential to tell a larger narrative.</span><br>
-        <span>All my tiny fragments come together to relive moments from my culture and shared traditions</span><br>
-        <span>by creating a small bubble of home away from home.</span><br>
-        <span>I explore poetic expressions by engaging with web and motion design.</span><br>
-        <span>The digital tools provide me with new modes of expressing complex narratives.</span><br>
-        <span>Sometimes, the results are simple, yet the complexity lies in its foundational structure.</span><br>
-        <span>I craft this space with curiosity, complexity, and code.</span><br>
-        <span>This experimentation is an evolving exercise in a handmade web that shapes up organically</span><br>
-        <span>instead of using a conventional rigid structure.</span><br>
-        <span>By inviting others to interact and experience the memories with me,</span><br>
-        <span>I try invoking nostalgia which may lead them to bring forward their own associations with home.</span>
+    <!-- Section for each category -->
+    <div class="section" style="top: 20%; left: 15%;">
+        <h2>Rain at Three</h2>
+        <div class="section-content">
+            <iframe src="rain at three/index.html" title="Rain at Three" allow="autoplay"></iframe>
+        </div>
+        <div class="mute-toggle">Mute</div>
+        <div class="resizer"></div>
     </div>
 
-     <!-- First audio element -->
-    <audio id="hoverAudio1" src="https://github.com/viltu08/Monsoon-Memories/blob/f105170312597784227534d70335651588aa496b/Monsoon.m4a?raw=true" type="audio/m4a"></audio>
-    
-    <!-- Second audio element -->
-    <audio id="hoverAudio2" src="https://github.com/viltu08/Monsoon-Memories/blob/60958b88df34afb1efb26204879730ae2566dfab/Peacock.wav?raw=true" type="audio/m4a"></audio>
+    <div class="section" style="top: 50%; left: 30%;">
+        <h2>Monsoon Musings</h2>
+        <div class="section-content">
+            <iframe src="Monsoon Musings/index.html" title="Monsoon Musings" allow="autoplay"></iframe>
+        </div>
+        <div class="mute-toggle">Mute</div>
+        <div class="resizer"></div>
+    </div>
 
- <!-- Third audio element -->
-    <audio id="hoverAudio3" src="https://github.com/viltu08/Monsoon-Memories/blob/2934c86ec2f4edb5ce415af32c08e854656fa203/windchimes.mp3?raw=true" type="audio/mp3"></audio>
+    <div class="section" style="top: 70%; left: 15%;">
+        <h2>Moment</h2>
+        <div class="section-content">
+            <iframe src="moment/index.html" title="Moment" allow="autoplay"></iframe>
+        </div>
+        <div class="mute-toggle">Mute</div>
+        <div class="resizer"></div>
+    </div>
 
-    <a class="link link9" href="rain at three/">Rain at Three</a>
-    <a class="link link1" href="Monsoon Musings/">Monsoon Musings</a>
-    <a class="link link3" href="moment/">Moment</a>
-    <a class="link link4" href="when the sky is soaked teabag/">When the sky is soaked teabag</a>
-    <a class="link link5" href="whispering whisps/">Whispering Whisps</a>
-    <a class="link link8" href="stay back till the sun comes/">Stay back till the sun comes</a>
-    <a class="link link2" href="chai/">Chai</a>
+    <div class="section" style="top: 35%; left: 55%;">
+        <h2>When the Sky is a Soaked Teabag</h2>
+        <div class="section-content">
+            <iframe src="when the sky is soaked teabag/index.html" title="When the Sky is a Soaked Teabag"
+                allow="autoplay"></iframe>
+        </div>
+        <div class="mute-toggle">Mute</div>
+        <div class="resizer"></div>
+    </div>
+
+    <div class="section" style="top: 65%; left: 85%;">
+        <h2>Whispering Wisps</h2>
+        <div class="section-content">
+            <iframe src="whispering whisps/index.html" title="Whispering Wisps" allow="autoplay"></iframe>
+        </div>
+        <div class="mute-toggle">Mute</div>
+        <div class="resizer"></div>
+    </div>
+
+    <div class="section" style="top: 20%; left: 85%;">
+        <h2>Stay Back Till the Sun Comes</h2>
+        <div class="section-content">
+            <iframe src="stay back till the sun comes/index.html" title="Stay Back Till the Sun Comes"
+                allow="autoplay"></iframe>
+        </div>
+        <div class="mute-toggle">Mute</div>
+        <div class="resizer"></div>
+    </div>
+
+    <div class="section" style="top: 80%; left: 45%;">
+        <h2>Chai</h2>
+        <div class="section-content">
+            <iframe src="chai/index.html?autoplay=1" title="Chai" allow="autoplay"></iframe>
+        </div>
+        <div class="mute-toggle">Mute</div>
+        <div class="resizer"></div>
+    </div>
 
     <script>
-        function getRandomColor() {
-            const colors = [
-                'rgba(0, 102, 204, 0.05)',
-                'rgba(0, 153, 255, 0.05)',
-                'rgba(51, 153, 255, 0.05)',
-                'rgba(0, 204, 255, 0.05)',
-                'rgba(51, 204, 255, 0.05)'
-            ];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
+        const sections = document.querySelectorAll('.section');
 
+        // Mute/Unmute functionality
+        sections.forEach(section => {
+            const iframe = section.querySelector('iframe');
+            const muteButton = section.querySelector('.mute-toggle');
+            let isMuted = false;
+
+            muteButton.addEventListener('click', () => {
+                if (!iframe.contentWindow) {
+                    console.error('Iframe content not accessible');
+                    return;
+                }
+
+                // Toggle mute state
+                isMuted = !isMuted;
+                muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+
+                // Send mute/unmute command to iframe
+                iframe.contentWindow.postMessage({ command: isMuted ? 'mute' : 'unmute' }, '*');
+            });
+        });
+
+        // Create bokeh effect
+        const bokehContainer = document.getElementById('bokeh-container');
         function createBokeh() {
             const bokeh = document.createElement('div');
             bokeh.className = 'bokeh';
 
-            const size = Math.random() * 100 + 50; // Random size
+            const size = Math.random() * 80 + 20; // Random size between 20 and 100
             bokeh.style.width = `${size}px`;
             bokeh.style.height = `${size}px`;
 
-            const color1 = getRandomColor();
-            const color2 = getRandomColor();
-            bokeh.style.background = `radial-gradient(circle, ${color1} 0%, ${color2} 50%)`;
-
             bokeh.style.left = `${Math.random() * window.innerWidth}px`;
             bokeh.style.top = `${Math.random() * window.innerHeight}px`;
-            document.body.appendChild(bokeh);
+
+            bokehContainer.appendChild(bokeh);
+
+            setTimeout(() => bokeh.remove(), 10000); // Remove after animation ends
         }
 
-        // Create a new bokeh every 800 milliseconds
-        setInterval(createBokeh, 800);
-
-        // Change cursor to gradient circle on hover
-        const links = document.querySelectorAll('.link');
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                link.style.cursor = 'url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Cdefs%3E%3ClinearGradient id=\'gradient1\' x1=\'0%\' y1=\'0%\' x2=\'100%\' y2=\'100%\'%3E%3Cstop offset=\'0%\' style=\'stop-color:%237CB9E8;stop-opacity:1\'/%3E%3Cstop offset=\'100%\' style=\'stop-color:%23002D62;stop-opacity:1\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\' fill=\'url(%23gradient1)\'/%3E%3C/svg%3E") 12 12, auto'; // Gradient circle cursor
-            });
-            link.addEventListener('mouseleave', () => {
-                link.style.cursor = 'auto'; // Reset cursor
-            });
-        });
-
-        // Get the audio elements
-        const hoverAudio1 = document.getElementById('hoverAudio1');
-        const hoverAudio2 = document.getElementById('hoverAudio2');
-		 const hoverAudio3 = document.getElementById('hoverAudio3');
-
-        // Set initial volumes for the two audio elements
-        hoverAudio1.volume = 1; // Set the volume for the first audio (range from 0.0 to 1.0)
-        hoverAudio2.volume = 0.1; // Set the volume for the second audio (range from 0.0 to 1.0)
-		
-	     hoverAudio3.volume = 0.1; // Set the volume for the second audio (range from 0.0 to 1.0)
-
-        // Get the heading element
-        const heading = document.querySelector('h1');
-
-        // Add event listeners to play/pause both audios on hover of h1
-        heading.addEventListener("mouseenter", () => {
-            hoverAudio1.play(); // Play first audio
-            hoverAudio2.play(); // Play second audio
-			hoverAudio3.play(); // Play third audio
-        });
-
-        heading.addEventListener("mouseleave", () => {
-            hoverAudio1.pause(); // Pause first audio
-            hoverAudio2.pause(); // Pause second audio
-			  hoverAudio3.pause(); // Pause third udio
-            hoverAudio1.currentTime = 0; // Reset the first audio playback position
-            hoverAudio2.currentTime = 0; // Reset the second audio playback position
-			 hoverAudio3.currentTime = 0; // Reset the second audio playback position
-        });
+        setInterval(createBokeh, 500); // Create a bokeh every 500ms
     </script>
 </body>
 

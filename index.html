@@ -170,7 +170,7 @@
         <div class="section-content">
             <iframe src="moment/index.html" title="Moment" allow="autoplay"></iframe>
         </div>
-        <div class="mute-toggle">Mute</div>
+        <div class="mute-toggle" >Mute</div>
         <div class="resizer"></div>
     </div>
 
@@ -215,46 +215,96 @@
     <script>
         const sections = document.querySelectorAll('.section');
 
-        // Mute/Unmute functionality
-        sections.forEach(section => {
-            const iframe = section.querySelector('iframe');
-            const muteButton = section.querySelector('.mute-toggle');
-            let isMuted = false;
+// Dragging functionality
+sections.forEach(section => {
+    const header = section.querySelector('h2');
+    let isDragging = false, offsetX, offsetY;
 
-            muteButton.addEventListener('click', () => {
-                if (!iframe.contentWindow) {
-                    console.error('Iframe content not accessible');
-                    return;
-                }
+    header.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - section.offsetLeft;
+        offsetY = e.clientY - section.offsetTop;
+        header.style.cursor = 'grabbing';
+        document.body.style.userSelect = 'none';
+    });
 
-                // Toggle mute state
-                isMuted = !isMuted;
-                muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        section.style.left = `${e.clientX - offsetX}px`;
+        section.style.top = `${e.clientY - offsetY}px`;
+    });
 
-                // Send mute/unmute command to iframe
-                iframe.contentWindow.postMessage({ command: isMuted ? 'mute' : 'unmute' }, '*');
-            });
-        });
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        header.style.cursor = 'grab';
+        document.body.style.userSelect = '';
+    });
 
-        // Create bokeh effect
-        const bokehContainer = document.getElementById('bokeh-container');
-        function createBokeh() {
-            const bokeh = document.createElement('div');
-            bokeh.className = 'bokeh';
+    // Resizing functionality
+    const resizer = section.querySelector('.resizer');
+    let isResizing = false, startWidth, startHeight, startX, startY;
 
-            const size = Math.random() * 80 + 20; // Random size between 20 and 100
-            bokeh.style.width = `${size}px`;
-            bokeh.style.height = `${size}px`;
+    resizer.addEventListener('mousedown', (e) => {
+        isResizing = true;
+        startWidth = section.offsetWidth;
+        startHeight = section.offsetHeight;
+        startX = e.clientX;
+        startY = e.clientY;
+        document.body.style.userSelect = 'none';
+    });
 
-            bokeh.style.left = `${Math.random() * window.innerWidth}px`;
-            bokeh.style.top = `${Math.random() * window.innerHeight}px`;
+    document.addEventListener('mousemove', (e) => {
+        if (!isResizing) return;
+        const width = startWidth + (e.clientX - startX);
+        const height = startHeight + (e.clientY - startY);
+        section.style.width = `${width}px`;
+        section.style.height = `${height}px`;
+    });
 
-            bokehContainer.appendChild(bokeh);
+    document.addEventListener('mouseup', () => {
+        isResizing = false;
+        document.body.style.userSelect = '';
+    });
 
-            setTimeout(() => bokeh.remove(), 10000); // Remove after animation ends
+    // Mute/Unmute functionality
+    const iframe = section.querySelector('iframe');
+    const muteButton = section.querySelector('.mute-toggle');
+    let isMuted = false;
+
+    muteButton.addEventListener('click', () => {
+        if (!iframe.contentWindow) {
+            console.error('Iframe content not accessible');
+            return;
         }
 
-        setInterval(createBokeh, 500); // Create a bokeh every 500ms
+        // Toggle mute state
+        isMuted = !isMuted;
+        muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+
+        // Send mute/unmute command to iframe
+        iframe.contentWindow.postMessage({ command: isMuted ? 'mute' : 'unmute' }, '*');
+    });
+});
+
+// Create bokeh effect
+const bokehContainer = document.getElementById('bokeh-container');
+function createBokeh() {
+    const bokeh = document.createElement('div');
+    bokeh.className = 'bokeh';
+
+    const size = Math.random() * 80 + 20; // Random size between 20 and 100
+    bokeh.style.width = `${size}px`;
+    bokeh.style.height = `${size}px`;
+
+    bokeh.style.left = `${Math.random() * window.innerWidth}px`;
+    bokeh.style.top = `${Math.random() * window.innerHeight}px`;
+
+    bokehContainer.appendChild(bokeh);
+
+    setTimeout(() => bokeh.remove(), 10000); // Remove after animation ends
+}
+
+setInterval(createBokeh, 500); // Create a bokeh every 500ms
     </script>
 </body>
 

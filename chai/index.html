@@ -29,19 +29,34 @@
     <script>
         var iframe = document.querySelector('iframe');
         var player = new Vimeo.Player(iframe);
-
-        // Set volume to maximum to ensure audio plays automatically
-        player.setVolume(1).then(function() {
-            console.log('Video volume set to maximum');
-        }).catch(function(error) {
-            console.error('Error setting the video volume:', error);
+    
+        // Ensure the video plays on load
+        player.play().catch(function(error) {
+            console.error('Error trying to autoplay the video:', error);
         });
-
+    
+        // Unmute if the user requests it via parent messaging
+        window.addEventListener('message', event => {
+            if (!event.data.command) return;
+    
+            const { command } = event.data;
+    
+            if (command === 'mute') {
+                player.setVolume(0).then(() => {
+                    console.log('Video muted');
+                }).catch(error => console.error('Error muting video:', error));
+            } else if (command === 'unmute') {
+                player.setVolume(1).then(() => {
+                    console.log('Video unmuted');
+                }).catch(error => console.error('Error unmuting video:', error));
+            }
+        });
+    
         function resizeIframe() {
             var aspectRatio = 16 / 9; // Standard video aspect ratio
             var width = window.innerWidth;
             var height = window.innerHeight;
-
+    
             if (width / height > aspectRatio) {
                 iframe.style.width = width + 'px';
                 iframe.style.height = (width / aspectRatio) + 'px';
@@ -50,27 +65,11 @@
                 iframe.style.height = height + 'px';
             }
         }
-
+    
         // Adjust iframe on load and resize
         window.addEventListener('resize', resizeIframe);
         resizeIframe(); // Call it initially
-
-          // Listen for messages from the parent
-window.addEventListener('message', event => {
-    if (!event.data.command) return;
-
-    const { command } = event.data;
-
-    if (command === 'mute') {
-        document.querySelectorAll('audio, video').forEach(media => {
-            media.muted = true;
-        });
-    } else if (command === 'unmute') {
-        document.querySelectorAll('audio, video').forEach(media => {
-            media.muted = false;
-        });
-    }
-});
     </script>
+    
 </body>
 </html>
